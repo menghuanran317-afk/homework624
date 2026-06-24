@@ -20,11 +20,11 @@
 
 ---
 
-# 项目目标
+## 项目目标
 
 针对家庭电力消耗数据完成以下两类预测任务：
 
-## 短期预测（Short-Term Forecasting）
+### 短期预测（Short-Term Forecasting）
 
 输入：
 
@@ -43,7 +43,7 @@
 
 ---
 
-## 长期预测（Long-Term Forecasting）
+### 长期预测（Long-Term Forecasting）
 
 输入：
 
@@ -62,9 +62,9 @@
 
 ---
 
-# 数据集来源
+## 数据集来源
 
-## 1. 家庭电力消耗数据
+### 1. 家庭电力消耗数据
 
 来源：
 
@@ -98,7 +98,7 @@ https://archive.ics.uci.edu/dataset/235/individual+household+electric+power+cons
 
 ---
 
-## 2. 天气数据
+### 2. 天气数据
 
 来源：
 
@@ -122,9 +122,9 @@ https://www.data.gouv.fr/fr/datasets/donnees-climatologiques-de-base-mensuelles
 
 ---
 
-# 特征工程
+## 特征工程
 
-## 电力特征
+### 电力特征
 
 ```text
 global_active_power
@@ -139,7 +139,7 @@ sub_metering_remainder
 
 ---
 
-## 天气特征
+### 天气特征
 
 ```text
 RR
@@ -151,7 +151,7 @@ NBJBROU
 
 ---
 
-## 日期特征
+### 日期特征
 
 ```text
 is_weekend
@@ -175,7 +175,7 @@ season
 
 ---
 
-## 周期编码特征
+### 周期编码特征
 
 为了增强模型对周期规律的学习能力，引入：
 
@@ -192,7 +192,7 @@ cos_dayofyear
 
 ---
 
-# 数据处理流程
+## 数据处理流程
 
 ```text
 原始电力数据
@@ -214,7 +214,7 @@ cos_dayofyear
 
 ---
 
-# 项目结构
+## 项目结构
 
 ```text
 ML_Power_Forecast/
@@ -252,9 +252,9 @@ ML_Power_Forecast/
 
 ---
 
-# 模型设计
+## 模型设计
 
-## 1. LSTM
+### 1. LSTM
 
 作为基线模型。
 
@@ -278,7 +278,7 @@ LSTM
 
 ---
 
-## 2. Transformer
+### 2. Transformer
 
 采用自注意力机制建模长距离依赖关系。
 
@@ -306,7 +306,7 @@ Linear
 
 ---
 
-## 3. TCN（改进模型）
+### 3. TCN（改进模型）
 
 TCN（Temporal Convolutional Network）采用：
 
@@ -336,7 +336,7 @@ Residual Block
 
 ---
 
-# 环境配置
+## 环境配置
 
 创建环境：
 
@@ -360,9 +360,9 @@ pip install holidays
 
 ---
 
-# 模型训练
+## 模型训练
 
-## LSTM
+### LSTM
 
 短期预测
 
@@ -381,7 +381,7 @@ python src/train_lstm.py \
 
 ---
 
-## Transformer
+### Transformer
 
 短期预测
 
@@ -400,7 +400,7 @@ python src/train_transformer.py \
 
 ---
 
-## TCN
+### TCN
 
 短期预测
 
@@ -419,9 +419,9 @@ python src/train_tcn.py \
 
 ---
 
-# 评价指标
+## 评价指标
 
-## 均方误差（MSE）
+### 均方误差（MSE）
 
 ```text
 MSE = mean((y_true - y_pred)^2)
@@ -431,7 +431,7 @@ MSE = mean((y_true - y_pred)^2)
 
 ---
 
-## 平均绝对误差（MAE）
+### 平均绝对误差（MAE）
 
 ```text
 MAE = mean(|y_true - y_pred|)
@@ -441,7 +441,7 @@ MAE = mean(|y_true - y_pred|)
 
 ---
 
-# 实验设置
+## 实验设置
 
 每个模型采用：
 
@@ -470,7 +470,7 @@ MAE = mean(|y_true - y_pred|)
 
 ---
 
-# 结果展示
+## 结果展示
 
 结果图片保存在：
 
@@ -502,9 +502,9 @@ tcn_output90_seed1.pth
 
 ---
 
-## 实验结果
+### 实验结果
 
-### 短期预测（90→90）
+#### 短期预测（90→90）
 
 | 模型          |           MSE |        MAE |
 | ----------- | ------------: | ---------: |
@@ -512,7 +512,7 @@ tcn_output90_seed1.pth
 | Transformer |     133936.18 |     278.11 |
 | TCN         | **120414.88** | **267.51** |
 
-### 长期预测（90→365）
+#### 长期预测（90→365）
 
 | 模型          |           MSE |        MAE |
 | ----------- | ------------: | ---------: |
@@ -522,7 +522,7 @@ tcn_output90_seed1.pth
 
 ---
 
-# 结论
+## 结论
 
 本项目比较了 LSTM、Transformer 和 TCN 三种深度学习模型在家庭电力消耗预测任务中的表现。
 
@@ -543,7 +543,9 @@ tcn_output90_seed1.pth
 * 概率预测模型
 
 ---
-git init
+## 作者
+
+孟焕然
 
 机器学习课程项目
 
